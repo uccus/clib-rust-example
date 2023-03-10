@@ -3,8 +3,8 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
 
-mod smf_helper;
-pub use smf_helper::*;
+mod internal;
+pub use internal::*;
 
 #[cfg(test)]
 mod tests {
@@ -14,7 +14,12 @@ mod tests {
     fn testInit(){
         let mut helper = SmfHelper::new();
         helper.setCertServer("gmvpn://10.0.240.13:18555".to_string()).unwrap();
+        helper.setUid("test123".to_string()).unwrap();
+        helper.setPassword("test123".to_string()).unwrap();
+        helper.setPin("123123".to_string()).unwrap();
         helper.initUser().unwrap();
+        helper.initialize().unwrap();
+        helper.enrollCert().unwrap();
         assert_eq!(0, 0);
     }
 }

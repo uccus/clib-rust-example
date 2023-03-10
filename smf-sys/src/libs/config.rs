@@ -3,6 +3,7 @@ use super::*;
 use std::error::Error;
 use std::ptr::null_mut;
 use std::ffi::CString;
+use std::ffi::CStr;
 
 #[repr(C)]
 #[derive(Debug)]
@@ -28,7 +29,7 @@ pub struct Config{
 }
 
 impl Config {
-    pub fn new() -> Config{
+    pub fn new() -> Config {
         Config { 
             cert_server_url: null_mut(),
             sks_server_url: null_mut(),
@@ -59,6 +60,14 @@ impl Config {
         }
         self.cert_server_url = CString::new(url)?.into_raw();
         Ok(())
+    }
+
+    pub fn getCertServer(&mut self) -> String{
+        if self.cert_server_url.is_null() {
+            return "".to_string();
+        }
+
+        return unsafe {CStr::from_ptr(self.cert_server_url).to_string_lossy().into_owned()};
     }
 
     pub fn setLogLevel(&mut self, level: c_int) 
