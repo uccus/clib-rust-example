@@ -1,5 +1,6 @@
 [workspace]
 members = [
     "smf",
+    "smf-jni",
     "smf-sys",
 ]
