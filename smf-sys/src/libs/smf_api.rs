@@ -1,5 +1,5 @@
 use super::*;
-use libc::*;
+use std::ffi::*;
 
 extern "C" {
     pub fn SMF_ConfigInit(config: *mut Config) -> c_int;

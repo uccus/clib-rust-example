@@ -1,5 +1,5 @@
-use libc::*;
 use std::error::Error;
+use std::ffi::c_int;
 
 pub struct Config{
     pub config: ffi::Config,

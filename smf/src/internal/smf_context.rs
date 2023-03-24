@@ -1,5 +1,3 @@
-use libc::*;
-
 pub struct SmfContext{
     pub ctx: *mut ffi::SMF_CONTEXT,
 }

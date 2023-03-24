@@ -1,4 +1,4 @@
-use libc::*;
+use std::ffi::c_int;
 
 pub const SMF_LOG_NONE: c_int = 0;
 pub const SMF_LOG_FATAL: c_int = 1;    // 致命错误日志

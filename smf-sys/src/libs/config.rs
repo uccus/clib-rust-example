@@ -1,9 +1,7 @@
-use libc::*;
 use super::*;
 use std::error::Error;
 use std::ptr::null_mut;
-use std::ffi::CString;
-use std::ffi::CStr;
+use std::ffi::*;
 
 #[repr(C)]
 #[derive(Debug)]

@@ -2,5 +2,6 @@
 members = [
     "smf",
     "smf-jni",
+    "smf-js",
     "smf-sys",
 ]

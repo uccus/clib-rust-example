@@ -1,5 +1,5 @@
-use libc::*;
 use std::ptr::null_mut;
+use std::ffi::*;
 
 #[repr(C)]
 pub struct SMF_CONTEXT{

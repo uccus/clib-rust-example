@@ -1,7 +1,6 @@
-use libc::*;
 use std::error::Error;
 use std::ptr::null_mut;
-use std::ffi::CString;
+use std::ffi::*;
 
 #[repr(C)]
 #[derive(Debug)]
