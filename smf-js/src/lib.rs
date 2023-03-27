@@ -1,14 +1,23 @@
+mod utils;
+
 use wasm_bindgen::prelude::*;
 use smf::*;
 
+// When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
+// allocator.
+#[cfg(feature = "wee_alloc")]
+#[global_allocator]
+static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+
 #[wasm_bindgen]
 extern {
-    pub fn alert(s: &str);
+    fn alert(s: &str);
 }
 
 #[wasm_bindgen]
-pub fn greet(name: &str) {
+pub fn greet() {
     let mut helper = SmfHelper::new();
-    helper.initUser().unwrap();
-    alert(&format!("Hello, {}!", name));
+    let ret = helper.initUser().unwrap();
+    assert_eq!(ret, 2000);
+    alert("Hello, smf-js!");
 }
