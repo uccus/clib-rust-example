@@ -14,6 +14,8 @@ smf-jni是将smf接口封装给java调用。
 
 此外，编译目标指定，例：`cargo build --target i686-pc-windows-msvc`
 
+也可以指定编译某个子包，例：`cargo build -p smf-jni`
+
 | target                   |                    |
 |:-----|:-----|
 | i686-pc-windows-msvc     | :heavy_check_mark: |
@@ -21,12 +23,15 @@ smf-jni是将smf接口封装给java调用。
 | i686-unknown-linux-gnu   | :heavy_check_mark: |
 | x86_64-unknown-linux-gnu | :heavy_check_mark: |
 | x86_64-linux-android | :heavy_check_mark: |
+| wasm32-unknown-unknown | :x: |
 
 可以通过`rustup show`查看当前工具链安装的`target`
 
 可以通过`rustup target list`查看支持的所有`target`
 
 可以通过`rustup target add`添加`target`
+
+可以通过`rustc --target TARGET --print cfg`来查看当前目标的环境变量
 
 ### 编译android版本的jni
 
@@ -40,6 +45,14 @@ rustup target add x86_64-linux-android
 cargo install cargo-ndk
 # 编译
 cargo ndk -t x86_64 build
+```
+
+### 编译wasm
+
+参考[rustwasm](https://rustwasm.github.io/docs/book/game-of-life/setup.html)。这里编译没有成功，错误信息：`thread 'main' panicked at 'assertion failed: address % 4 == 0', crates\wasm-interpreter\src\lib.rs:310:17`，大概率是依赖的本地库编译有问题。
+
+```bash
+wasm-pack build smf-js
 ```
 
 
