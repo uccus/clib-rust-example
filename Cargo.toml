@@ -1,7 +1,11 @@
 [workspace]
 members = [
     "smf",
+    "smf-sys",
     "smf-jni",
     "smf-js",
-    "smf-sys",
 ]
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"

@@ -11,3 +11,6 @@ crate-type = ["cdylib"]
 [dependencies]
 smf ={ package = "smf", version = "0.1.0", path = "../smf" }
 jni ={ version = "0.20", default-features = false}
+
+[features]
+jni = []
