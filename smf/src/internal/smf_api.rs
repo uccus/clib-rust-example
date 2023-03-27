@@ -2,10 +2,10 @@ use super::*;
 use std::ffi::CString;
 use std::error::Error;
 
-pub fn initUserConfig(config: &mut Config) -> Result<(), Box<dyn Error>> {
+pub fn initUserConfig(config: &mut Config) -> Result<i32, Box<dyn Error>> {
     let config = &mut config.config as *mut ffi::Config;
     let ret = unsafe { ffi::SMF_ConfigInit(config) };
-    Ok(())
+    Ok(ret)
 }
 
 pub fn initialize(uid: String, url: String, out: &mut SmfContext) 

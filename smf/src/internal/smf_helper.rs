@@ -40,7 +40,7 @@ impl SmfHelper{
         Ok(())
     }
 
-    pub fn initUser(&mut self) -> Result<(), Box<dyn Error>> {
+    pub fn initUser(&mut self) -> Result<i32, Box<dyn Error>> {
         return initUserConfig(&mut self.config);
     }
 

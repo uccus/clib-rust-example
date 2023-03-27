@@ -17,7 +17,8 @@ mod tests {
         helper.setUid("test123".to_string()).unwrap();
         helper.setPassword("test123".to_string()).unwrap();
         helper.setPin("123123".to_string()).unwrap();
-        helper.initUser().unwrap();
+        let ret = helper.initUser().unwrap();
+        assert_eq!(ret, 2000);
         helper.initialize().unwrap();
         helper.enrollCert().unwrap();
         assert_eq!(0, 0);
